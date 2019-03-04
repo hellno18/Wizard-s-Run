@@ -18,20 +18,27 @@ public class Spawn : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        //find player
         GameObject player = GameObject.Find("Player");
+        //if player not alive
         if (!player)
         {
+            //pause
             Time.timeScale = 0;
         }
+        //if player is alive
         else
         {
+            //resume
             Time.timeScale = 1;
         }
         if (timeToSpawn <= 0)
         {
+            //make a random for spawning
             int rand = Random.Range(0, obstaclePatterns.Length);
-            Debug.Log("random"+rand);
+            //Debug.Log("random"+rand);
           
+            //spawn object on obj
             GameObject obj = Instantiate(obstaclePatterns[rand], transform.position, Quaternion.identity) as GameObject;
             Destroy(obj,1);
             

@@ -17,6 +17,7 @@ public class spawnpoint : MonoBehaviour {
 	void Update () {
         if (timeToSpawn <= 0)
         {
+            //spawn object 
             Instantiate(obstacle, transform.position, Quaternion.identity);
             timeToSpawn = startTimeToSpawn;
             if (startTimeToSpawn > minTime)

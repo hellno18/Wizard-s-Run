@@ -17,9 +17,8 @@ public class Score : MonoBehaviour {
     {
         if (other.CompareTag("obstacle"))
         {
+            //get 2 point
             scorecalc.getScore(2);
-
-            //Debug.Log("score:"+score);
         }
     }
 }

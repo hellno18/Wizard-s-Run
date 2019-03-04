@@ -17,6 +17,7 @@ public class Loading : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        //get volume
         volume= PlayerPrefs.GetFloat("SoundState");
         gameObject.GetComponent<AudioSource>().volume = volume;
         if (currentAmount<100)

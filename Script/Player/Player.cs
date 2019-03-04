@@ -30,26 +30,29 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if player health below 0, player died
         if (health <= 0)
         {
  
             anim.SetBool("Dead", true);
             this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            //while died, give little delay
             StartCoroutine(deadDelay());
-
-            //SceneManager.LoadScene("MainMenu");
         }
+        //input right 
         if (Input.GetKeyDown(KeyCode.RightArrow)|| Input.GetKeyDown(KeyCode.D))
         {
             InputRight();
 
         }
+        //input left
         if (Input.GetKeyDown(KeyCode.LeftArrow)|| Input.GetKeyDown(KeyCode.A))
         {
             InputLeft();
         }
 
     }
+
     public void InputLeft()
     {
         if (transform.position.x > minWidth)
@@ -58,10 +61,11 @@ public class Player : MonoBehaviour
             //set volume SE
             source.volume = PlayerPrefs.GetFloat("SoundState");
             source.PlayOneShot(sfxLeft, 1f);
+            //change position
             Instantiate(effect, transform.position, Quaternion.identity);
             targetPos = new Vector2(transform.position.x - incrementX, transform.position.y);
             transform.position = targetPos;
-
+            //delay time
             StartCoroutine(delay());
 
         }
@@ -75,14 +79,18 @@ public class Player : MonoBehaviour
             //set volume SE
             source.volume = PlayerPrefs.GetFloat("SoundState");
             source.PlayOneShot(sfxRight, 1f);
+            //change position
             Instantiate(effect, transform.position, Quaternion.identity);
             targetPos = new Vector2(transform.position.x + incrementX, transform.position.y);
             transform.position = targetPos;
+            //delay time
             StartCoroutine(delay());
 
         }
 
     }
+
+    //while triggered with obstacle
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("obstacle"))
@@ -96,7 +104,7 @@ public class Player : MonoBehaviour
     IEnumerator delay()
     {
         yield return new WaitForSeconds(0.1f);
-        Debug.Log("delay");
+        //Debug.Log("delay");
         anim.SetBool("Right", false);
         anim.SetBool("Left", false);
     }

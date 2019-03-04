@@ -28,6 +28,7 @@ public class ScoreCalc : MonoBehaviour {
         if (score > highestScore)
         {
             highestScore = score;
+            //set highscore
             PlayerPrefs.SetInt("HighScore", highestScore);
         }
     }
@@ -39,8 +40,9 @@ public class ScoreCalc : MonoBehaviour {
         if (score < 0)
         {
             score = 0;
+            //set score
             PlayerPrefs.SetInt("Score", score);
         }
-        Debug.Log("scoret:" + score);
+        //Debug.Log("scoret:" + score);
     }
 }

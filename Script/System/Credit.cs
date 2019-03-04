@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class Credit : MonoBehaviour
 {
     public VideoPlayer vid;
-    //private double time;
     private double currentTime;
     private float volume;
     // Start is called before the first frame update
@@ -19,6 +18,7 @@ public class Credit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //get volume 
         volume = PlayerPrefs.GetFloat("SoundState");
         gameObject.GetComponent<AudioSource>().volume= volume;
         CheckOver();
